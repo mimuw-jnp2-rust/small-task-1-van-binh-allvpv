@@ -22,7 +22,7 @@ const TAKEAWAY_FEE: u32 = 1;
 
 #[derive(Debug, Clone)]
 struct Order {
-    dishes : Vec<Dish>,
+    dishes: Vec<Dish>,
     takeaway: bool,
 }
 
@@ -43,10 +43,9 @@ impl Order {
     }
 
     fn dish_count(&self, dish: Dish) -> u32 {
-        self.dishes.iter().fold(0, |acc, x| 
-            if x == &dish { acc + 1 }
-            else { acc }
-        )
+        self.dishes
+            .iter()
+            .fold(0, |acc, x| if x == &dish { acc + 1 } else { acc })
     }
 
     fn items_count(&self) -> u32 {
@@ -101,7 +100,7 @@ impl VanBinh {
 
     fn add_customer(&mut self, name: String, favorite_order: &Order) {
         self.customers.push(Customer {
-            name: name,
+            name,
             favorite_order: favorite_order.clone(),
         });
     }
